@@ -120,42 +120,61 @@ export const SearchHero: React.FC<SearchHeroProps> = ({ onSearch, isLoading }) =
         </div>
       </form>
 
-      {/* Preset Demo Tokens */}
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs">
-        <span className="text-slate-500 flex items-center gap-1 mr-1">
-          Try Live Demo:
-        </span>
-        {DEMO_TOKENS.map((demo) => {
-          const isHoneypot = demo.badge.includes('Scam');
-          return (
-            <button
-              key={demo.label}
-              onClick={() => handleSelectDemo(demo.address, demo.label)}
-              className={`px-3 py-1 rounded-lg border text-xs font-mono transition flex items-center gap-1.5 cursor-pointer ${
-                isHoneypot
-                  ? 'bg-rose-950/40 border-rose-800/60 text-rose-300 hover:bg-rose-900/50'
-                  : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white'
-              }`}
-            >
-              {isHoneypot && <AlertTriangle className="w-3 h-3 text-rose-400" />}
-              {copiedDemo === demo.label ? (
-                <>
-                  <Check className="w-3 h-3 text-emerald-400" />
-                  <span className="text-emerald-300 font-bold">Loaded!</span>
-                </>
-              ) : (
-                <>
-                  <span>{demo.label}</span>
-                  <span className={`text-[9px] px-1 py-0.2 rounded font-sans ${
-                    isHoneypot ? 'bg-rose-500/20 text-rose-300' : 'bg-slate-800 text-slate-400'
-                  }`}>
-                    {demo.badge}
-                  </span>
-                </>
-              )}
-            </button>
-          );
-        })}
+      {/* Preset Demo & Trending Tokens with Category Tabs */}
+      <div className="mt-6 max-w-3xl mx-auto">
+        <div className="flex items-center justify-center gap-1.5 mb-3 text-xs">
+          <span className="text-slate-500 font-medium mr-1 flex items-center gap-1">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" /> Quick Audits:
+          </span>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
+          {DEMO_TOKENS.map((demo) => {
+            const isHoneypot = demo.badge.includes('Scam');
+            const isSol = demo.chain === 'solana';
+            const isBase = demo.chain === 'base';
+            return (
+              <button
+                key={demo.label}
+                onClick={() => handleSelectDemo(demo.address, demo.label)}
+                className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition flex items-center gap-1.5 cursor-pointer shadow-sm ${
+                  isHoneypot
+                    ? 'bg-rose-950/40 border-rose-800/60 text-rose-300 hover:bg-rose-900/50'
+                    : isSol
+                    ? 'bg-purple-950/30 border-purple-800/40 text-purple-200 hover:border-purple-500/60 hover:text-white'
+                    : isBase
+                    ? 'bg-blue-950/30 border-blue-800/40 text-blue-200 hover:border-blue-500/60 hover:text-white'
+                    : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white'
+                }`}
+              >
+                {isHoneypot && <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />}
+                {copiedDemo === demo.label ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-300 font-bold">Scanning...</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-semibold">{demo.label}</span>
+                    <span
+                      className={`text-[9px] px-1.5 py-0.5 rounded font-sans font-medium ${
+                        isHoneypot
+                          ? 'bg-rose-500/20 text-rose-300'
+                          : isSol
+                          ? 'bg-purple-500/20 text-purple-300'
+                          : isBase
+                          ? 'bg-blue-500/20 text-blue-300'
+                          : 'bg-slate-800 text-slate-400'
+                      }`}
+                    >
+                      {demo.badge}
+                    </span>
+                  </>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

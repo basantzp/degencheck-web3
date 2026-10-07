@@ -106,6 +106,17 @@ export const AuditResult: React.FC<AuditResultProps> = ({ report, settings }) =>
     window.open(shareUrl, '_blank');
   };
 
+  const handleShareTelegram = () => {
+    const symbol = marketData?.symbol || 'TOKEN';
+    const tgText = `🛡️ DegenCheck Audit: $${symbol} (${chainName})\n` +
+      `Safety Score: ${safetyScore}/100 [${riskLevel}]\n` +
+      `Honeypot: ${isHoneypot ? '❌ YES (CANNOT SELL)' : '✅ PASS'}\n` +
+      `Taxes: ${buyTax}% Buy / ${sellTax}% Sell\n` +
+      `Audit Report:`;
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(tgText)}`;
+    window.open(shareUrl, '_blank');
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pb-20 space-y-6">
       {/* 1. TOP SUMMARY CARD */}
@@ -428,7 +439,15 @@ export const AuditResult: React.FC<AuditResultProps> = ({ report, settings }) =>
             className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/30 flex items-center justify-center gap-1.5 transition cursor-pointer"
           >
             <Send className="w-3.5 h-3.5" />
-            <span>Tweet on X</span>
+            <span>Tweet</span>
+          </button>
+
+          <button
+            onClick={handleShareTelegram}
+            className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 flex items-center justify-center gap-1.5 transition cursor-pointer"
+          >
+            <Share2 className="w-3.5 h-3.5" />
+            <span>Telegram</span>
           </button>
 
           <button
