@@ -2,7 +2,11 @@
 
 An ultra-fast, multi-chain smart-contract security scanner and DEX sniper companion built for Solana, Base, and EVM chains. Designed with zero backend infrastructure requirements and a built-in **high-converting Web3 referral monetization engine**.
 
+🌐 **Live Production App:** [https://degencheck-web3.vercel.app](https://degencheck-web3.vercel.app)  
+📦 **GitHub Repository:** [https://github.com/basantzp/degencheck-web3](https://github.com/basantzp/degencheck-web3)
+
 ---
+
 
 ## 💎 Monetization Architecture: How This Site Earns Money
 
