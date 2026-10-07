@@ -4,6 +4,7 @@ import { SearchHero } from './components/SearchHero';
 import { AuditResult } from './components/AuditResult';
 import { IncomeCalculatorModal } from './components/IncomeCalculatorModal';
 import { AffiliateSettingsModal } from './components/AffiliateSettingsModal';
+import { Web3AdBanner } from './components/Web3AdBanner';
 import { HardwareSecurityBanner } from './components/HardwareSecurityBanner';
 import { Footer } from './components/Footer';
 import { auditToken, DEMO_TOKENS } from './services/api';
@@ -12,13 +13,14 @@ import type { SecurityReport, ReferralSettings } from './types';
 import { AlertCircle } from 'lucide-react';
 
 const DEFAULT_SETTINGS: ReferralSettings = {
-  trojanRef: 'degencheck_vip',
-  maestroRef: 'degencheck_alpha',
-  photonRef: 'degencheck',
-  bananaGunRef: 'degencheck_vip',
-  bullXRef: 'degencheck',
-  ledgerRef: 'https://shop.ledger.com/?r=degencheck',
+  trojanRef: import.meta.env.VITE_TROJAN_REF || 'degencheck_vip',
+  maestroRef: import.meta.env.VITE_MAESTRO_REF || 'degencheck_alpha',
+  photonRef: import.meta.env.VITE_PHOTON_REF || 'degencheck',
+  bananaGunRef: import.meta.env.VITE_BANANAGUN_REF || 'degencheck_vip',
+  bullXRef: import.meta.env.VITE_BULLX_REF || 'degencheck',
+  ledgerRef: import.meta.env.VITE_LEDGER_REF || 'https://shop.ledger.com/?r=degencheck',
 };
+
 
 export function App() {
   const [report, setReport] = useState<SecurityReport | null>(null);
@@ -121,6 +123,9 @@ export function App() {
           </div>
         )}
 
+        {/* Web3 Sponsored Monetization Banner */}
+        <Web3AdBanner trojanRef={settings.trojanRef} />
+
         {/* 4. Live Audit Result */}
         {!isLoading && report && (
           <>
@@ -128,6 +133,7 @@ export function App() {
             <HardwareSecurityBanner ledgerRef={settings.ledgerRef} />
           </>
         )}
+
       </main>
 
       {/* 5. Footer */}
