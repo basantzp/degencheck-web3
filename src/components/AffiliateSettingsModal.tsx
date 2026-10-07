@@ -34,7 +34,7 @@ export const AffiliateSettingsModal: React.FC<AffiliateSettingsModalProps> = ({
   const handleReset = () => {
     const defaultSettings: ReferralSettings = {
       trojanRef: 'r-misterpokhrel',
-      maestroRef: 'degencheck_alpha',
+      maestroRef: 'r-misterpokhrel',
       photonRef: 'degencheck',
       bananaGunRef: 'degencheck_vip',
       bullXRef: 'degencheck',
@@ -44,6 +44,7 @@ export const AffiliateSettingsModal: React.FC<AffiliateSettingsModalProps> = ({
     setForm(defaultSettings);
     onSave(defaultSettings);
   };
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">

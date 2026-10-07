@@ -9,7 +9,7 @@
 
 const SITE_URL = 'https://degencheck-web3.vercel.app';
 const TROJAN_REF = process.env.TROJAN_REF || 'r-misterpokhrel';
-const MAESTRO_REF = process.env.MAESTRO_REF || 'degencheck_alpha';
+const MAESTRO_REF = process.env.MAESTRO_REF || 'r-misterpokhrel';
 
 
 async function fetchTrendingPairs() {
@@ -42,7 +42,8 @@ function generateAlertCard(pair) {
   const isSol = pair.chainId === 'solana';
   const botLink = isSol
     ? `https://t.me/solana_trojanbot?start=${TROJAN_REF}_${pair.baseToken.address}`
-    : `https://t.me/MaestroSniperBot?start=${MAESTRO_REF}-${pair.baseToken.address}`;
+    : `https://t.me/maestro?start=${MAESTRO_REF}-${pair.baseToken.address}`;
+
 
   const botName = isSol ? 'Trojan on Solana' : 'Maestro Sniper';
   const priceChange = pair.priceChange?.h24 || 0;

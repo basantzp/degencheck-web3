@@ -63,8 +63,9 @@ export const AuditResult: React.FC<AuditResultProps> = ({ report, settings }) =>
   const isSol = chain === 'solana';
   const trojanUrl = `https://t.me/solana_trojanbot?start=${encodeURIComponent(settings.trojanRef)}_${encodeURIComponent(tokenAddress)}`;
   const photonUrl = `https://photon-sol.tinyastro.io/en/r/${encodeURIComponent(settings.photonRef)}/token/${encodeURIComponent(tokenAddress)}`;
-  const maestroUrl = `https://t.me/MaestroSniperBot?start=${encodeURIComponent(settings.maestroRef)}-${encodeURIComponent(tokenAddress)}`;
+  const maestroUrl = `https://t.me/maestro?start=${encodeURIComponent(settings.maestroRef)}-${encodeURIComponent(tokenAddress)}`;
   const bananaGunUrl = `https://t.me/BananaGunSniper_bot?start=${encodeURIComponent(settings.bananaGunRef)}_${encodeURIComponent(tokenAddress)}`;
+
 
   // Primary recommended bot
   const primaryBotName = isSol ? 'Trojan on Solana' : 'Maestro Sniper Bot';
