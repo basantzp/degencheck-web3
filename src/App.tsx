@@ -13,13 +13,14 @@ import type { SecurityReport, ReferralSettings } from './types';
 import { AlertCircle } from 'lucide-react';
 
 const DEFAULT_SETTINGS: ReferralSettings = {
-  trojanRef: import.meta.env.VITE_TROJAN_REF || 'degencheck_vip',
+  trojanRef: import.meta.env.VITE_TROJAN_REF || 'r-misterpokhrel',
   maestroRef: import.meta.env.VITE_MAESTRO_REF || 'degencheck_alpha',
   photonRef: import.meta.env.VITE_PHOTON_REF || 'degencheck',
   bananaGunRef: import.meta.env.VITE_BANANAGUN_REF || 'degencheck_vip',
   bullXRef: import.meta.env.VITE_BULLX_REF || 'degencheck',
   ledgerRef: import.meta.env.VITE_LEDGER_REF || 'https://shop.ledger.com/?r=degencheck',
 };
+
 
 
 export function App() {

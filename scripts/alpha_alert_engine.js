@@ -8,8 +8,9 @@
  */
 
 const SITE_URL = 'https://degencheck-web3.vercel.app';
-const TROJAN_REF = process.env.TROJAN_REF || 'degencheck_vip';
+const TROJAN_REF = process.env.TROJAN_REF || 'r-misterpokhrel';
 const MAESTRO_REF = process.env.MAESTRO_REF || 'degencheck_alpha';
+
 
 async function fetchTrendingPairs() {
   console.log('🔍 Fetching top trending pairs from DexScreener...');

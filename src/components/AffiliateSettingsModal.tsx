@@ -33,13 +33,14 @@ export const AffiliateSettingsModal: React.FC<AffiliateSettingsModalProps> = ({
 
   const handleReset = () => {
     const defaultSettings: ReferralSettings = {
-      trojanRef: 'degencheck_vip',
+      trojanRef: 'r-misterpokhrel',
       maestroRef: 'degencheck_alpha',
       photonRef: 'degencheck',
       bananaGunRef: 'degencheck_vip',
       bullXRef: 'degencheck',
       ledgerRef: 'https://shop.ledger.com/?r=degencheck',
     };
+
     setForm(defaultSettings);
     onSave(defaultSettings);
   };
